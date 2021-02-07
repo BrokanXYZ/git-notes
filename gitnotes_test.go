@@ -1,4 +1,4 @@
-package gitnotes
+package main
 
 import (
 	"os/exec"

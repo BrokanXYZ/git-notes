@@ -1,4 +1,4 @@
-package gitnotes
+package main
 
 import (
 	"bytes"
@@ -9,10 +9,10 @@ import (
 	"os/exec"
 )
 
-func main() {
+// ForwardGitCommand ...
+func ForwardGitCommand(args []string) {
 
 	program := "git"
-	args := os.Args[1:]
 	cmd := exec.Command(program, args...)
 
 	var stdoutBuf, stderrBuf bytes.Buffer
@@ -23,8 +23,22 @@ func main() {
 	if err != nil {
 		log.Fatalf("cmd.Run() failed with %s\n", err)
 	}
-	outStr, errStr := string(stdoutBuf.Bytes()), string(stderrBuf.Bytes())
+}
 
-	fmt.Print(outStr)
-	fmt.Print(errStr)
+// GitToMarkdown ...
+func GitToMarkdown(args []string) {
+	fmt.Println(args[0])
+	switch command := args[0]; command {
+	case "commit":
+		fmt.Println("COMMIT")
+	case "checkout":
+	case "branch":
+		fmt.Println("NEW BRANCH??")
+	}
+}
+
+func main() {
+	args := os.Args[1:]
+	GitToMarkdown(args)
+	ForwardGitCommand(args)
 }
