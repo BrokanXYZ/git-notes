@@ -1,4 +1,4 @@
-package main
+package gitnotes
 
 import (
 	"bytes"
