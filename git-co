@@ -1,0 +1,6 @@
+#!/bin/sh
+OUTPUT="$(git checkout "$@")"
+STATUS=$?
+
+echo "$OUTPUT"
+[ $STATUS -eq 0 ] && gitnotes $OUTPUT
